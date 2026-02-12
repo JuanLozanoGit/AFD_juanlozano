@@ -1,45 +1,35 @@
-# AFD_juanlozano
-
 # Simulador de Autómata Finito Determinista (AFD)
-### Proyecto: Validación de Cadenas Binarias con Inicio Específico
+# Autor: Juan Camilo Lozano Cortes
+### Validación de Cadenas con Prefijo Cero
 
-Este proyecto es una implementación robusta en Python de un **AFD** diseñado para filtrar cadenas basadas en su símbolo inicial y su composición.
+Este programa implementa un modelo computacional de un Autómata Finito Determinista (AFD) en Python. El objetivo principal es procesar un archivo de texto con múltiples cadenas y determinar si pertenecen al lenguaje regular definido.
 
----
+## 1. Definición de la Lógica del Autómata
 
-## Lógica del Autómata
-El programa evalúa cada línea de un archivo de texto y determina si pertenece al lenguaje definido.
+El autómata está diseñado bajo la restricción de que toda cadena válida debe iniciar obligatoriamente con el símbolo '0' y estar compuesta exclusivamente por el alfabeto binario.
 
-### Reglas de Validación:
-1. **Condición de Inicio:** La cadena debe empezar obligatoriamente con el carácter `0`.
-2. **Alfabeto ($\Sigma$):** Solo se permiten los caracteres `{0, 1}`.
-3. **Restricción de Punto:** El carácter `.` no es parte del alfabeto y causará el rechazo inmediato (Estado de Error).
-4. **Estado de Aceptación:** Solo si el autómata termina en el estado $q1$ después de procesar toda la cadena, se marcará como **ACEPTA**.
+### Especificaciones Formales:
+* **Alfabeto (Σ):** {0, 1}
+* **Conjunto de Estados (Q):** {q0, q1, q_error}
+* **Estado Inicial:** q0
+* **Estado de Aceptación (F):** {q1}
 
-### Diseño Formal
-* **Estados:** $Q = \{q0, q1, q\_error\}$
-* **Estado Inicial:** $q0$
-* **Estado Final:** $F = \{q1\}$
-* **Transiciones principales:**
-    - $\delta(q0, 0) \rightarrow q1$
-    - $\delta(q1, \{0, 1\}) \rightarrow q1$
-    - $\delta(cualquiera, .) \rightarrow q\_error$
+### Comportamiento de las Transiciones:
+1.  **Estado q0 (Inicial):** Si el primer carácter es '0', transita a q1. Si es '1' o cualquier otro carácter (como '.'), transita a q_error.
+2.  **Estado q1 (Aceptación):** Permanece en q1 si recibe '0' o '1'. Si recibe cualquier carácter fuera del alfabeto, transita a q_error.
+3.  **Estado q_error (Muerte):** Una vez que el autómata entra en este estado, la cadena se marca como NO ACEPTA y se detiene el procesamiento de esa línea.
 
----
 
-## Ejecución en Linux (Paso a Paso)
 
-Para correr este programa en cualquier distribución de Linux (Ubuntu, Debian, Fedora, etc.), sigue estos pasos:
+## 2. Instrucciones de Ejecución en Linux
 
-### 1. Preparar los archivos
-Asegúrate de tener en la misma carpeta:
-* `AFD.py` (El código fuente)
-* `entrada.txt` (El archivo con las cadenas)
+Para ejecutar el programa correctamente en un entorno basado en Unix/Linux, siga estos pasos detallados:
 
-### 2. Abrir la Terminal
-Haz clic derecho en la carpeta y selecciona **"Abrir en la terminal"**.
+### Paso 1: Localización de los archivos
+Es indispensable que el archivo del programa `AFD.py` y el archivo de datos `entrada.txt` se encuentren en el mismo directorio.
 
-### 3. Ejecutar el comando
-Escribe lo siguiente y presiona `Enter`:
+### Paso 2: Acceso a la ruta desde la terminal
+Debe abrir una terminal y navegar hasta la carpeta específica donde guardó los archivos. Utilice el comando `cd` (change directory):
+
 ```bash
-python3 AFD.py entrada.txt
+cd /ruta/hacia/tu/carpeta/donde/esta/el/codigo
