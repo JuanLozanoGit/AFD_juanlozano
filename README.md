@@ -33,3 +33,20 @@ Debe abrir una terminal y navegar hasta la carpeta específica donde guardó los
 
 ```bash
 cd /ruta/hacia/tu/carpeta/donde/esta/el/codigo
+```
+
+
+### Paso 3: Ejecución del script
+Una vez posicionado en la carpeta correcta, ejecute el intérprete de Python 3 pasando el archivo de entrada como argumento:
+```bash
+python3 AFD.py entrada.txt
+```
+
+## 3. Formato de Entrada y Salida
+Entrada (entrada.txt):
+
+El archivo debe contener una cadena por línea. Ejemplo: 0101 110 0.1
+Salida (Consola):
+
+El programa imprimirá la cadena procesada seguida de su veredicto: 0101 ACEPTA 110 NO ACEPTA 0.1 NO ACEPTA
+
